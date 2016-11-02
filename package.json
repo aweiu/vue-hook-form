@@ -1,8 +1,9 @@
 {
-  "name": "vue-ajax-form",
+  "name": "vue-hook-form",
   "version": "0.0.0",
   "description": "用于处理form请求，获取formData。以便于将form请求转成ajax/fetch请求",
   "keywords": [
+    "hook-form",
     "ajax-form",
     "vue-form",
     "form-data",
@@ -12,10 +13,10 @@
   "author": {
     "name": "余阿伟"
   },
-  "main": "AjaxForm.vue",
+  "main": "HookForm.vue",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aweiu/vue-ajax-form.git"
+    "url": "https://github.com/aweiu/vue-hook-form.git"
   },
   "license": "ISC",
   "dependencies": {
