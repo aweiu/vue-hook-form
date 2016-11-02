@@ -1,0 +1,24 @@
+{
+  "name": "vue-ajax-form",
+  "version": "0.0.0",
+  "description": "用于处理form请求，获取formData。以便于将form请求转成ajax/fetch请求",
+  "keywords": [
+    "ajax-form",
+    "vue-form",
+    "form-data",
+    "form-serialize",
+    "vue"
+  ],
+  "author": {
+    "name": "余阿伟"
+  },
+  "main": "AjaxForm.vue",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aweiu/vue-ajax-form.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "form-serialize": "^0.7.1"
+  }
+}
