@@ -98,3 +98,7 @@ hookForm.onSubmit = request => {
     })
 }
 ```
+## 常见问题
+### 全局onSubmit中提交了请求，返回了请求。这些操作如何通知到对应的组件？
+Request对象中有一个hookFormVm属性，这是hookForm组件本身的vue实例。[父子组件通信](http://cn.vuejs.org/guide/components.html#u7236_u5B50_u7EC4_u4EF6_u901A_u4FE1) <br>
+也就是说hookForm只是扮演form和ajax之间的桥梁，负责传送一下form表单数据。你可以基于它二次封装一个更多功能的form组件
