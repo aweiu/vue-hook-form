@@ -14,13 +14,15 @@
         if (typeof hookForm.onSubmit !== 'function' && typeof this.onSubmit !== 'function') return console.warn('please set me an \'onSubmit\' handler!')
         if (!this.disabled) {
           var next = () => {
-            var request = {
-              url: this.action,
-              method: (this.method || 'post').toLowerCase(),
-              body: formSerialize(this.$el, {hash: this.json !== undefined ? this.json : hookForm.json}),
-              vm: this
-            }
-            this.runHook('onSubmit', request)
+            setTimeout(() => {
+              var request = {
+                url: this.action,
+                method: (this.method || 'post').toLowerCase(),
+                body: formSerialize(this.$el, {hash: this.json !== undefined ? this.json : hookForm.json}),
+                vm: this
+              }
+              this.runHook('onSubmit', request)
+            }, 0)
           }
           this.runHook('beforeSerialize', this, next)
         }

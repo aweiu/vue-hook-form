@@ -1,6 +1,6 @@
 {
   "name": "vue-hook-form",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "用于处理form请求，获取formData。以便于将form请求转成ajax/fetch请求",
   "keywords": [
     "hook-form",
