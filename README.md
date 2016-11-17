@@ -14,7 +14,8 @@ npm install vue-hook-form
 import vue from 'vue'
 import hookForm from 'vue-hook-form'
 // 配置全局form表单序列化之前的hook
-hookForm.beforeSerialize = next => {
+hookForm.beforeSerialize = (vm, next) => {
+  // vm: 对应的hookForm vm实例
   // next：继续执行
   // 你可以在此处执行表单校验
 }
@@ -31,7 +32,7 @@ Request对象：
   url: '请求地址',
   body: '请求参数',
   method: '请求方法',
-  hookFormVm: '对应的hookForm vm实例'
+  vm: '对应的hookForm vm实例'
 }
 ```
 ### 二，vue文件中使用
@@ -47,7 +48,7 @@ Request对象：
   export default {
     methods: {
       // 局部hook
-      beforeSerialize (next) {
+      beforeSerialize (vm, next) {
         // next：继续执行
         // 你可以在此处执行表单校验
       },
@@ -93,17 +94,17 @@ hookForm.onSubmit = request => {
 ```
 hookForm.onSubmit = request => {
   // 禁止form提交
-  request.hookFormVm.disabled = true
+  request.vm.disabled = true
   // 在ajax请求或其他相关操作之后再释放禁用。
   doSomeThing()
     .then(() => {
-      request.hookFormVm.disabled = false
+      request.vm.disabled = false
     })
 }
 ```
 ## 常见问题
 ### 全局onSubmit中提交了请求，返回了请求。这些操作如何通知到对应的组件？
-Request对象中有一个hookFormVm属性，这是hookForm组件本身的vue实例。[父子组件通信](http://cn.vuejs.org/guide/components.html#u7236_u5B50_u7EC4_u4EF6_u901A_u4FE1) <br>
+Request对象中有一个vm属性，这是hookForm组件本身的vue实例。[父子组件通信](http://cn.vuejs.org/guide/components.html#u7236_u5B50_u7EC4_u4EF6_u901A_u4FE1) <br>
 也就是说hookForm只是扮演form和ajax之间的桥梁，负责传送一下form表单数据。你可以基于它二次封装一个更多功能的form组件
 
 ### 全局hook和局部hook会不会同时触发？

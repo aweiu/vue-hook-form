@@ -18,16 +18,16 @@
               url: this.action,
               method: (this.method || 'post').toLowerCase(),
               body: formSerialize(this.$el, {hash: this.json !== undefined ? this.json : hookForm.json}),
-              hookFormVm: this
+              vm: this
             }
             this.runHook('onSubmit', request)
           }
-          this.runHook('beforeSerialize', next)
+          this.runHook('beforeSerialize', this, next)
         }
       },
-      runHook (name, arg) {
-        if (typeof this[name] === 'function') this[name](arg)
-        else if (typeof hookForm[name] === 'function') hookForm[name](arg)
+      runHook (name, ...args) {
+        if (typeof this[name] === 'function') this[name].apply(null, args)
+        else if (typeof hookForm[name] === 'function') hookForm[name].apply(null, args)
       }
     }
   }
